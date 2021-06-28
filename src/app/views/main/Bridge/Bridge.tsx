@@ -18,6 +18,9 @@ import { ethers } from "ethers";
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Web3Modal from 'web3modal';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+import Fortmatic from "fortmatic";
+import Portis from "@portis/web3";
 
 
 const useStyles = makeStyles((theme: AppTheme) => ({
@@ -112,33 +115,47 @@ const BridgeView: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props: any) 
                 },
                 package: null
             },
+            walletconnect: {
+                package: WalletConnectProvider,
+                options: {
+                    infuraId: ""
+                }
+            },
+            fortmatic: {
+                package: Fortmatic,
+                options: {
+                    key: ""
+                }
+            },
+            portis: {
+                package: Portis,
+                options: {
+                    id: ""
+                }
+            }
         };
 
         const web3Modal = new Web3Modal({
             network: "mainnet",
             cacheProvider: true,
+            disableInjectedProvider: false,
             providerOptions
-        })
+        });
 
-        const provider = await web3Modal.connect()
-        console.log(provider)
+        const provider = await web3Modal.connect();
+        const signer = provider.getSigner();
+        const ethAddress = await signer.getAddress();
 
-        // try {
-        //     let provider;
-        //     (window as any).ethereum.enable().then(provider = new ethers.providers.Web3Provider((window as any).ethereum));
-        //     const signer = provider.getSigner();
-        //     const ethAddress = await signer.getAddress();
+        dispatch(actions.Bridge.update({
+            sourceAddress: ethAddress
+        }))
 
-        //     setFormState({
-        //         ...formState,
-        //         sourceAddress: ethAddress
-        //     })
-        //     dispatch(actions.Bridge.update({
-        //         sourceAddress: ethAddress
-        //     }))
-        // } catch (error) {
-        //     console.error(error);
-        // }
+        dispatch(actions.Web3.update({
+            wallet: {
+                provider: provider,
+                address: ethAddress
+            }
+        }))
     };
 
     const onTransferAmountChange = (amount: string = "0") => {
