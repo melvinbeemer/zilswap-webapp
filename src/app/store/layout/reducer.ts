@@ -4,7 +4,6 @@ import { LayoutState } from "./types";
 
 const initial_state: LayoutState = {
   showWalletDialog: false,
-  showWeb3Dialog: false,
   showCreatePool: false,
   showAdvancedSetting: false,
   showTransactionDialog: false,
@@ -23,11 +22,6 @@ const reducer = (state: LayoutState = initial_state, action: any) => {
       return {
         ...state,
         showWalletDialog: !action.override ? !state.showWalletDialog : action.override === "open",
-      };
-    case LayoutActionTypes.TOGGLE_SHOW_WEB3:
-      return {
-        ...state,
-        showWeb3Dialog: !action.override ? !state.showWeb3Dialog : action.override === "open",
       };
     case LayoutActionTypes.SHOW_POOL_TYPE:
       return {

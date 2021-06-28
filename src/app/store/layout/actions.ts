@@ -2,7 +2,6 @@ import { OpenCloseState, PoolType, FormNotification } from "./types";
 
 export const LayoutActionTypes = {
   TOGGLE_SHOW_WALLET: "TOGGLE_SHOW_WALLET",
-  TOGGLE_SHOW_WEB3: "TOGGLE_SHOW_WEB3",
   SHOW_POOL_TYPE: "SHOW_POOL_TYPE",
   SHOW_ADVANCED_SETTING: "SHOW_ADVANCED_SETTING",
   TOGGLE_SHOW_CREATE_POOL: "TOGGLE_SHOW_CREATE_POOL",
@@ -18,12 +17,6 @@ export const LayoutActionTypes = {
 export function toggleShowWallet(override?: OpenCloseState) {
   return {
     type: LayoutActionTypes.TOGGLE_SHOW_WALLET,
-    override,
-  }
-};
-export function toggleShowWeb3(override?: OpenCloseState) {
-  return {
-    type: LayoutActionTypes.TOGGLE_SHOW_WEB3,
     override,
   }
 };

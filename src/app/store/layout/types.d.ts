@@ -14,7 +14,6 @@ export interface FormNotification {
 
 export interface LayoutState {
   showWalletDialog: boolean;
-  showWeb3Dialog: boolean;
   showCreatePool: boolean;
   showAdvancedSetting: boolean;
   showTransactionDialog: boolean;
