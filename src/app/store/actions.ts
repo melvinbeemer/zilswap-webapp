@@ -9,6 +9,7 @@ import * as Swap from "./swap/actions";
 import * as Pool from "./pool/actions";
 import * as Rewards from "./rewards/actions";
 import * as Transaction from "./transaction/actions";
+import * as Web3 from "./web3/actions";
 
-const actions = { Preference, Blockchain, Bridge, Layout, Wallet, Swap, Stats, Token, Pool, Rewards, Transaction };
+const actions = { Preference, Blockchain, Bridge, Layout, Wallet, Swap, Stats, Token, Pool, Rewards, Transaction, Web3 };
 export default actions;

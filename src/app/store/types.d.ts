@@ -9,6 +9,7 @@ import { SwapFormState } from "./swap/types";
 import { PoolFormState } from "./pool/types";
 import { RewardsState } from "./rewards/types";
 import { BridgeFormState } from "./bridge/types";
+import { Web3State } from "./web3/types";
 
 export * from "./blockchain/types";
 export * from "./transaction/types";
@@ -20,6 +21,7 @@ export * from "./stats/types";
 export * from "./swap/types";
 export * from "./pool/types";
 export * from "./rewards/types";
+export * from "./web3/types";
 
 export interface RootState {
   blockchain: BlockchainState
@@ -33,4 +35,5 @@ export interface RootState {
   swap: SwapFormState;
   pool: PoolFormState;
   rewards: RewardsState;
+  web3: Web3State;
 };
